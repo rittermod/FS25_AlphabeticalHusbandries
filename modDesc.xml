@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="100">
+    <author>Ritter</author>
+    <version>1.0.0.0</version>
+    <iconFilename>icon_AlphabeticalHusbandries.dds</iconFilename>
+    <title>
+        <en>Alphabetical Husbandries</en>
+    </title>
+    <description>
+        <en><![CDATA[Alphabetical Husbandries
+
+This mod is a simple utility to help players find and manage their husbandries more 
+easily by providing an alphabetical sorting in the game's animal menu.
+
+]]></en>
+    </description>
+    <extraSourceFiles>
+        <sourceFile filename="scripts/RmAlphabeticalHusbandries.lua"/>
+    </extraSourceFiles>
+    <multiplayer supported="true"/>
+</modDesc>

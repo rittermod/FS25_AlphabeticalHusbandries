@@ -1,0 +1,5 @@
+.claude/
+CLAUDE.md
+.vscode/
+build/
+scripts/scratch.lua
