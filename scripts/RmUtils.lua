@@ -3,7 +3,7 @@ local RmUtils_mt = Class(RmUtils)
 
 local debugEnabled = false
 local traceEnabled = false
-local LOG_PREFIX = "[RmAlphabeticalHusbandries] "
+local LOG_PREFIX = "[RmUtils]"
 
 local function debugPrint(msg)
     print(string.format("  Debug: %s", msg))
@@ -29,7 +29,7 @@ local function logCommon(logFunc, ...)
             end
             v = table.concat(parts, ", ")
         end
-        logFunc(string.format("%s%s", LOG_PREFIX, tostring(v)))
+        logFunc(string.format("%s %s", LOG_PREFIX, tostring(v)))
     end
 end
 
@@ -93,4 +93,8 @@ function RmUtils.functionParametersToString(...)
     end
     
     return table.concat(result, "\n")
+end
+
+function RmUtils.setLogPrefix(prefix)
+    LOG_PREFIX = prefix or "[RmUtils]"
 end

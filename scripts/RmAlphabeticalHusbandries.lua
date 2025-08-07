@@ -3,6 +3,7 @@ local RmAlphabeticalHusbandries_mt = Class(RmAlphabeticalHusbandries)
 
 RmAlphabeticalHusbandries.dir = g_currentModDirectory
 source(RmAlphabeticalHusbandries.dir .. "scripts/RmUtils.lua")
+RmUtils.setLogPrefix("[RmAlphabeticalHusbandries]")
 
 function RmAlphabeticalHusbandries.new(customMt)
     local self = setmetatable({}, customMt or RmAlphabeticalHusbandries_mt)
