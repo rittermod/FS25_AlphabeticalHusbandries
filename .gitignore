@@ -3,3 +3,5 @@ CLAUDE.md
 .vscode/
 build/
 scripts/scratch.lua
+build.sh
+package.json
