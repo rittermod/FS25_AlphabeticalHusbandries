@@ -3,5 +3,16 @@
     "workspace.ignoreDir": [
     ],
     "workspace.ignorePattern": [
+    ],
+    "diagnostics.globals": [
+        "addModEventListener",
+        "Class",
+        "g_currentModDirectory",
+        "g_messageCenter",
+        "InGameMenuAnimalsFrame",
+        "Logging",
+        "MessageType",
+        "source",
+        "Utils"
     ]
 }
