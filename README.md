@@ -2,7 +2,7 @@
 
 Tired of hunting through your husbandries to find the right animals? This mod sorts your husbandries alphabetically in the Animals menu for easier management and navigation.
 
-Multiplayer probably supported.
+Singleplayer only.
 
 ## Notes
 This mod hooks into the in-game Animals menu to provide alphabetical sorting of husbandries. It works by sorting both the underlying data and the GUI selector when you open the Animals menu.

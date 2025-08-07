@@ -17,5 +17,5 @@ easily by providing an alphabetical sorting in the game's animal menu.
     <extraSourceFiles>
         <sourceFile filename="scripts/RmAlphabeticalHusbandries.lua"/>
     </extraSourceFiles>
-    <multiplayer supported="true"/>
+    <multiplayer supported="false"/>
 </modDesc>
