@@ -2,8 +2,8 @@ RmAlphabeticalHusbandries = {}
 local RmAlphabeticalHusbandries_mt = Class(RmAlphabeticalHusbandries)
 
 RmAlphabeticalHusbandries.dir = g_currentModDirectory
-source(RmAlphabeticalHusbandries.dir .. "scripts/RmUtils.lua")
-RmUtils.setLogPrefix("[RmAlphabeticalHusbandries]")
+source(RmAlphabeticalHusbandries.dir .. "scripts/rmlib/RmLogging.lua")
+local Log = RmLogging.getLogger("AlphabeticalHusbandries")
 
 function RmAlphabeticalHusbandries.new(customMt)
     local self = setmetatable({}, customMt or RmAlphabeticalHusbandries_mt)
@@ -26,7 +26,7 @@ local function alphabeticalSortHusbandries(a, b)
 end
 
 function RmAlphabeticalHusbandries.missionStarted()
-    RmUtils.logInfo("Mission started, hooking into husbandry sorting functions")
+    Log:info("Mission started, hooking into husbandry sorting functions")
 
     if InGameMenuAnimalsFrame then
         -- Hook updateHusbandries to sort data whenever it's updated
@@ -34,13 +34,13 @@ function RmAlphabeticalHusbandries.missionStarted()
             if self.sortedHusbandries and type(self.sortedHusbandries) == "table" and #self.sortedHusbandries > 0 then
                 -- Sort the husbandries alphabetically
                 table.sort(self.sortedHusbandries, alphabeticalSortHusbandries)
-                RmUtils.logDebug("Sorted " .. #self.sortedHusbandries .. " husbandries in updateHusbandries")
+                Log:debug("Sorted %d husbandries in updateHusbandries", #self.sortedHusbandries)
             end
         end)
         
         -- Hook onFrameOpen to update selector when animals menu is opened
         InGameMenuAnimalsFrame.onFrameOpen = Utils.appendedFunction(InGameMenuAnimalsFrame.onFrameOpen, function(self)
-            RmUtils.logDebug("InGameMenuAnimalsFrame.onFrameOpen called")
+            Log:debug("InGameMenuAnimalsFrame.onFrameOpen called")
             if self.sortedHusbandries and type(self.sortedHusbandries) == "table" and #self.sortedHusbandries > 0 then
                 -- Ensure data is sorted
                 table.sort(self.sortedHusbandries, alphabeticalSortHusbandries)
@@ -56,19 +56,19 @@ function RmAlphabeticalHusbandries.missionStarted()
                     
                     if self.subCategorySelector.setTexts then
                         self.subCategorySelector:setTexts(sortedTexts)
-                        RmUtils.logDebug("Updated selector with alphabetical order")
+                        Log:debug("Updated selector with alphabetical order")
                     else
-                        RmUtils.logWarning("subCategorySelector.setTexts not found, cannot update texts")
+                        Log:warning("subCategorySelector.setTexts not found, cannot update texts")
                     end
                 else
-                    RmUtils.logWarning("subCategorySelector not found in InGameMenuAnimalsFrame")
+                    Log:warning("subCategorySelector not found in InGameMenuAnimalsFrame")
                 end
             end
         end)
 
-        RmUtils.logInfo("Successfully hooked InGameMenuAnimalsFrame onFrameOpen")
+        Log:info("Successfully hooked InGameMenuAnimalsFrame onFrameOpen")
     else
-        RmUtils.logWarning("InGameMenuAnimalsFrame not found")
+        Log:warning("InGameMenuAnimalsFrame not found")
     end
 end
 
