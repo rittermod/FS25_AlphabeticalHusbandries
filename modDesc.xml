@@ -1,21 +1,34 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="106">
+<modDesc descVersion="107">
     <author>Ritter</author>
-    <version>1.0.0.1</version>
+    <version>1.0.1.0</version>
     <iconFilename>icon_AlphabeticalHusbandries.dds</iconFilename>
     <title>
         <en>Alphabetical Husbandries</en>
     </title>
     <description>
-        <en><![CDATA[Alphabetical Husbandries
+        <en><![CDATA[Sorts your husbandries alphabetically in the Animals menu for easier management and navigation.
 
-This mod is a simple utility to help players find and manage their husbandries more 
-easily by providing an alphabetical sorting in the game's animal menu.
+Singleplayer only.
 
+Features:
+- Automatically sorts husbandries by the names you have given them
+- No configuration required - just install and enjoy
+
+Changelog:
+1.0.1.0:
+- Improved internal code structure and logging for better diagnostics
+- Added automated test suite for reliability
+
+1.0.0.0:
+- Initial release
+- Automatically sorts husbandries alphabetically by name in the Animals menu
+
+Documentation: https://github.com/rittermod/FS25_AlphabeticalHusbandries
 ]]></en>
     </description>
     <extraSourceFiles>
-        <sourceFile filename="scripts/RmAlphabeticalHusbandries.lua"/>
+        <sourceFile filename="scripts/main.lua"/>
     </extraSourceFiles>
     <multiplayer supported="false"/>
 </modDesc>
