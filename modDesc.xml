@@ -9,8 +9,6 @@
     <description>
         <en><![CDATA[Sorts your husbandries alphabetically in the Animals menu for easier management and navigation.
 
-Singleplayer only.
-
 Features:
 - Automatically sorts husbandries by the names you have given them
 - No configuration required - just install and enjoy
@@ -30,5 +28,5 @@ Documentation: https://github.com/rittermod/FS25_AlphabeticalHusbandries
     <extraSourceFiles>
         <sourceFile filename="scripts/main.lua"/>
     </extraSourceFiles>
-    <multiplayer supported="false"/>
+    <multiplayer supported="true"/>
 </modDesc>
