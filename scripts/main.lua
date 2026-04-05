@@ -11,7 +11,9 @@ local modName = g_currentModName
 
 source(modDirectory .. "scripts/rmlib/RmLogging.lua")
 local Log = RmLogging.getLogger("AlphabeticalHusbandries")
+Log:setLevel(RmLogging.LOG_LEVEL.DEBUG)
 
+source(modDirectory .. "scripts/RmSettings.lua")
 source(modDirectory .. "scripts/RmAlphabeticalHusbandries.lua")
 
 -- =============================================================================

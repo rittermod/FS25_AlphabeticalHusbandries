@@ -5,7 +5,8 @@ Tired of hunting through your husbandries to find the right animals? This mod so
 ## Features
 
 - **Alphabetical Sorting:** Automatically sorts husbandries by the names you have given them
-- **No Configuration Required:** Works automatically - just install and enjoy
+- **Hide Empty Husbandries:** Optionally hide husbandries with no animals - useful on maps with many calf huts or seasonal husbandries. Toggle in Game Settings.
+- **No Configuration Required:** Sorting works automatically - just install and enjoy
 
 ## Installation
 
@@ -20,6 +21,7 @@ Tired of hunting through your husbandries to find the right animals? This mod so
 
 1. Install the mod
 2. Open the Animals menu - husbandries are sorted alphabetically automatically
+3. To hide empty husbandries: open Game Settings and enable "Hide empty husbandries"
 
 ## Changelog
 

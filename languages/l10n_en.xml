@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+        <!-- Settings -->
+        <text name="rm_ah_settings_section" text="Alphabetical Husbandries"/>
+        <text name="rm_ah_settings_hideEmpty" text="Hide empty husbandries"/>
+        <text name="rm_ah_settings_hideEmpty_tooltip" text="Hide husbandries with no animals from the Animals menu. Useful on maps with many calf huts or seasonal husbandries."/>
+    </texts>
+</l10n>

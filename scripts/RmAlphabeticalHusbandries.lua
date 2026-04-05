@@ -36,6 +36,46 @@ function RmAlphabeticalHusbandries.alphabeticalSortHusbandries(a, b)
 end
 
 -- =============================================================================
+-- FILTERING
+-- =============================================================================
+
+--- Filter out empty husbandries from a sorted list
+--- Only hides husbandries that have getNumOfAnimals AND it returns 0.
+--- Husbandries without the method are kept visible (never hide unknowns).
+---@param sortedList table Array of husbandry objects
+---@return table Filtered array (or original if setting is off)
+function RmAlphabeticalHusbandries.filterEmptyHusbandries(sortedList)
+    if not RmSettings.isHideEmptyEnabled() then
+        return sortedList
+    end
+
+    local filtered = {}
+    local hiddenCount = 0
+
+    for _, husbandry in ipairs(sortedList) do
+        if husbandry ~= nil and husbandry.getNumOfAnimals ~= nil then
+            local numAnimals = husbandry:getNumOfAnimals()
+            if numAnimals == 0 then
+                hiddenCount = hiddenCount + 1
+                Log:trace("Hiding empty husbandry: %s", husbandry.getName and husbandry:getName() or "unknown")
+            else
+                -- Has animals, or nil return (treat unknown count as non-empty)
+                table.insert(filtered, husbandry)
+            end
+        else
+            -- Unknown type or missing method -- keep visible
+            table.insert(filtered, husbandry)
+        end
+    end
+
+    if hiddenCount > 0 then
+        Log:debug("Filtered %d empty husbandries, showing %d", hiddenCount, #filtered)
+    end
+
+    return filtered
+end
+
+-- =============================================================================
 -- HOOKS
 -- =============================================================================
 
@@ -48,7 +88,8 @@ function RmAlphabeticalHusbandries.missionStarted()
         InGameMenuAnimalsFrame.updateHusbandries = Utils.appendedFunction(InGameMenuAnimalsFrame.updateHusbandries, function(self)
             if self.sortedHusbandries and type(self.sortedHusbandries) == "table" and #self.sortedHusbandries > 0 then
                 table.sort(self.sortedHusbandries, RmAlphabeticalHusbandries.alphabeticalSortHusbandries)
-                Log:debug("Sorted %d husbandries in updateHusbandries", #self.sortedHusbandries)
+                self.sortedHusbandries = RmAlphabeticalHusbandries.filterEmptyHusbandries(self.sortedHusbandries)
+                Log:debug("Sorted and filtered husbandries in updateHusbandries, showing %d", #self.sortedHusbandries)
             else
                 Log:trace("updateHusbandries: no husbandries to sort")
             end
@@ -59,6 +100,7 @@ function RmAlphabeticalHusbandries.missionStarted()
             Log:trace(">>> onFrameOpen hook")
             if self.sortedHusbandries and type(self.sortedHusbandries) == "table" and #self.sortedHusbandries > 0 then
                 table.sort(self.sortedHusbandries, RmAlphabeticalHusbandries.alphabeticalSortHusbandries)
+                self.sortedHusbandries = RmAlphabeticalHusbandries.filterEmptyHusbandries(self.sortedHusbandries)
 
                 if self.subCategorySelector then
                     local sortedTexts = {}
